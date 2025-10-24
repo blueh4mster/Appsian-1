@@ -13,8 +13,14 @@ namespace backend
 
             var tasks = new List<TaskItem>();
 
-            // GET all tasks
             app.MapGet("/api/tasks", () => Results.Ok(tasks));
+
+            app.MapPost("/api/tasks", ([FromBody] TaskItem newTask) =>
+            {
+                newTask.Id = Guid.NewGuid();
+                tasks.Add(newTask);
+                return Results.Created($"/api/tasks/{newTask.Id}", newTask);
+            });
 
             app.Run();
         }
