@@ -26,6 +26,14 @@ function App() {
     fetchTasks();
   };
 
+  const toggleTask = async (task: TaskItem) => {
+    await axios.put(`${API_URL}/${task.id}`, {
+      ...task,
+      isCompleted: !task.isCompleted,
+    });
+    fetchTasks();
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Task List</h2>
@@ -54,6 +62,7 @@ function App() {
                 textDecoration: task.isCompleted ? "line-through" : "none",
                 cursor: "pointer",
               }}
+              onClick={()=>toggleTask(task)}
             >
               {task.description}
             </span>
