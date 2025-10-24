@@ -8,6 +8,15 @@ const API_URL = "http://localhost:5171/api/tasks";
 function App() {
   const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [description, setDescription] = useState("");
+  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+
+  const filteredTasks = tasks.filter(task =>
+    filter === "all"
+      ? true
+      : filter === "completed"
+      ? task.isCompleted
+      : !task.isCompleted
+  );
 
   useEffect(() => {
     fetchTasks();
@@ -40,6 +49,8 @@ function App() {
   };
 
   return (
+  <>
+  
     <div className="container mt-5">
       <h2 className="text-center mb-4">Task List</h2>
 
@@ -55,9 +66,13 @@ function App() {
           Add
         </button>
       </div>
-
+      <div className="btn-group mb-3">
+        <button className={`btn btn-outline-secondary ${filter === "all" ? "active" : ""}`} onClick={() => setFilter("all")}>All</button>
+        <button className={`btn btn-outline-secondary ${filter === "active" ? "active" : ""}`} onClick={() => setFilter("active")}>Active</button>
+        <button className={`btn btn-outline-secondary ${filter === "completed" ? "active" : ""}`} onClick={() => setFilter("completed")}>Completed</button>
+      </div>
       <ul className="list-group">
-        {tasks.map((task) => (
+        {filteredTasks.map((task) => (
           <li
             key={task.id}
             className="list-group-item d-flex justify-content-between align-items-center"
@@ -82,6 +97,7 @@ function App() {
         ))}
       </ul>
     </div>
+  </>
   );
 }
 
