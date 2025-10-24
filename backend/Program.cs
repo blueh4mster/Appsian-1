@@ -22,6 +22,27 @@ namespace backend
                 return Results.Created($"/api/tasks/{newTask.Id}", newTask);
             });
 
+            app.MapPut("/api/tasks/{id}", (Guid id, [FromBody] TaskItem updatedTask) =>
+            {
+                var task = tasks.FirstOrDefault(t => t.Id == id);
+                if (task is null)
+                    return Results.NotFound();
+
+                task.Description = updatedTask.Description;
+                task.IsCompleted = updatedTask.IsCompleted;
+                return Results.Ok(task);
+            });
+
+            app.MapDelete("/api/tasks/{id}", (Guid id) =>
+            {
+                var task = tasks.FirstOrDefault(t => t.Id == id);
+                if (task is null)
+                    return Results.NotFound();
+
+                tasks.Remove(task);
+                return Results.NoContent();
+            });
+
             app.Run();
         }
     }
