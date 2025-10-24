@@ -34,6 +34,11 @@ function App() {
     fetchTasks();
   };
 
+  const deleteTask = async (id: string) => {
+    await axios.delete(`${API_URL}/${id}`);
+    fetchTasks();
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Task List</h2>
@@ -66,6 +71,13 @@ function App() {
             >
               {task.description}
             </span>
+
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={() => deleteTask(task.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
