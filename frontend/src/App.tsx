@@ -132,7 +132,7 @@ function App() {
               {task.description}
             </span>
             {task.isCompleted && (
-            <span className="badge bg-success rounded-pill me-2">Done</span>
+            <span className="badge rounded-pill me-2" style={{backgroundColor: "#ff4d6d", color: "#fff", fontWeight: "500" }}>Done</span>
             )}
             <button
               className="btn btn-sm"
