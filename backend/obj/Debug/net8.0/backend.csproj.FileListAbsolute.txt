@@ -31,3 +31,4 @@
 /mnt/c/Users/PREETI/Documents/appsian/Appsian-1/backend/obj/Debug/net8.0/backend.pdb
 /mnt/c/Users/PREETI/Documents/appsian/Appsian-1/backend/obj/Debug/net8.0/backend.genruntimeconfig.cache
 /mnt/c/Users/PREETI/Documents/appsian/Appsian-1/backend/obj/Debug/net8.0/ref/backend.dll
+/mnt/c/Users/PREETI/Documents/appsian/Appsian-1/backend/obj/Debug/net8.0/backend.sourcelink.json
