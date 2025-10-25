@@ -3,7 +3,7 @@ import axios from "axios";
 import { TaskItem } from "./types";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_URL = "http://localhost:5171/api/tasks";
+const API_URL = "https://appsian-1.onrender.com/api/tasks";
 
 function App() {
   const [tasks, setTasks] = useState<TaskItem[]>([]);
