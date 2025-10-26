@@ -64,11 +64,11 @@ function App() {
     alt="Ribbon"
     style={{
       position: "absolute",
-      top: "-20px",       // adjust vertical position
-      right: "-20px",     // adjust horizontal position
-      width: "120px",     // adjust size
-      opacity: 0.4,       // soft pastel effect
-      zIndex: 0           // behind the card
+      top: "-20px",      
+      right: "-20px",     
+      width: "120px",     
+      opacity: 0.4,       
+      zIndex: 0           
     }}
   />
       <div className="row justify-content-center">
